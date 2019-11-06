@@ -12,5 +12,5 @@ class AttendanceLog(Document):
 
 def get_att_log():
 	for device in frappe.db.get_all("Device",fields=["name", "ip","port"]):
-		print "==>",device.ip,device.port,device.name
+		print("==>",device.ip,device.port,device.name)
 		get_log(device.ip,device.port,device.name)

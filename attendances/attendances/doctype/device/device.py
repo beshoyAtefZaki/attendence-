@@ -17,11 +17,11 @@ def test_conn(ip=None,port=None):
 	conn = None
 	zk = ZK(ip, port=int(port), timeout=5)
 	try:
-		print 'Connecting to device {0} on port {1}'.format(ip,port)
+		print ('Connecting to device {0} on port {1}'.format(ip,port))
 		conn = zk.connect()
 		return 'success'
-	except Exception, e:
-		print "Process terminate : {}".format(e)
+	except Exception as e:
+		print ("Process terminate : {}".format(e))
 		return 'error'
 	finally:
 		if conn:
@@ -36,8 +36,8 @@ def set_time(ip=None,port=None):
 		response = conn.set_time(str(datetime.now()))
 		if response:
 			return 'success'
-	except Exception, e:
-		print "Process terminate : {}".format(e)
+	except Exception as e:
+		print ("Process terminate : {}".format(e))
 		return 'error'
 	finally:
 		if conn:
@@ -50,9 +50,9 @@ def get_log(ip=None,port=None,device_name=None):
 	try:
 		conn = zk.connect()
 		response = conn.get_attendance()
-		print response
+		print (response)
 		for attendance in response :
-			print "attendance {0} time:{1} status {2}".format(attendance.user_id,attendance.timestamp,attendance.status)
+			print ("attendance {0} time:{1} status {2}".format(attendance.user_id,attendance.timestamp,attendance.status))
 
 			if attendance.status == 0 :
 				status='Check In'
@@ -75,8 +75,8 @@ def get_log(ip=None,port=None,device_name=None):
 
 		if response:
 			return 'success'
-	except Exception, e:
-		print "Process terminate : {}".format(e)
+	except Exception as e:
+		print ("Process terminate : {}".format(e))
 		return 'error'
 	finally:
 		if conn:
